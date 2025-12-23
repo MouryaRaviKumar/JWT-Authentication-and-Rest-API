@@ -4,6 +4,7 @@ const dotenv = require("dotenv").config();
 const port  = process.env.PORT || 5000;
 const { errorHandler } = require("./middleware/errorMiddleware");
 const goalRoutes = require("./routes/goalRoutes");
+const userRoutes = require("./routes/userRoutes");
 const { connectDB } = require("./config/db");
 
 connectDB();
@@ -13,6 +14,7 @@ app.use(express.urlencoded({extended : true}));
 app.use(express.json());
 
 app.use("/api/goals",goalRoutes);
+app.use("/api/users",userRoutes);
 
 app.use(errorHandler);
 
